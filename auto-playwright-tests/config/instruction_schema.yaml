@@ -1,0 +1,42 @@
+version: '1.0'
+schema:
+  test_suite:
+    name: string
+    description: string
+    framework: string  # e.g., 'playwright', 'selenium', 'cypress'
+    language: string   # e.g., 'typescript', 'python', 'javascript'
+    
+  global_config:
+    test_data:
+      file: string
+      format: string  # e.g., 'json', 'csv', 'yaml'
+    api_mocks:
+      - endpoint: string
+        method: string
+        response:
+          status: number
+          body: object
+          headers: object
+    
+  steps:
+    - description: string
+      type: string  # e.g., 'action', 'assertion', 'api_mock'
+      action:
+        type: string  # e.g., 'click', 'type', 'select'
+        target: string  # element selector or API endpoint
+        value: string  # input value or expected result
+      api_mock:
+        endpoint: string
+        method: string
+        response:
+          status: number
+          body: object
+          headers: object
+      assertion:
+        type: string  # e.g., 'element', 'api', 'url'
+        target: string
+        condition: string  # e.g., 'equals', 'contains', 'matches'
+        value: string
+      test_data:
+        source: string  # path to data in test data file
+        field: string   # specific field to use 

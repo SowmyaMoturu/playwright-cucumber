@@ -1,0 +1,16 @@
+# Test Generator Configuration
+
+# Base prompt configuration
+base_prompt_file: "prompts/base_prompt.md"  # Path to your custom base prompt
+
+# LLM Configuration
+llm:
+  provider: "openai"  # LLM provider (e.g., openai, anthropic)
+  model: "gpt-4"     # Model to use
+  temperature: 0.2   # Lower temperature for more consistent output
+  max_tokens: 4000   # Maximum tokens in response
+
+# Output Configuration
+output:
+  format: "typescript"  # Default output format
+  test_file_extension: ".spec.ts"  # Extension for generated test files 

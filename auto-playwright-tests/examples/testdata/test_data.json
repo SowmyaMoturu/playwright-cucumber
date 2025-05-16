@@ -1,0 +1,70 @@
+{
+  "users": {
+    "valid": {
+      "email": "user@example.com",
+      "password": "validPassword123",
+      "name": "John Doe",
+      "id": "123",
+      "preferences": {
+        "theme": "light",
+        "notifications": true
+      }
+    },
+    "invalid": {
+      "email": "user@example.com",
+      "password": "wrongPassword"
+    }
+  },
+  "api": {
+    "endpoints": {
+      "login": "/api/auth/login",
+      "profile": "/api/user/profile",
+      "logout": "/api/auth/logout"
+    },
+    "responses": {
+      "login": {
+        "success": {
+          "status": 200,
+          "data": {
+            "token": "jwt.token.here",
+            "user": {
+              "id": "123",
+              "name": "John Doe",
+              "email": "user@example.com"
+            }
+          }
+        },
+        "error": {
+          "status": 401,
+          "error": {
+            "code": "AUTH_FAILED",
+            "message": "Invalid email or password"
+          }
+        }
+      },
+      "profile": {
+        "success": {
+          "status": 200,
+          "data": {
+            "name": "John Doe",
+            "email": "user@example.com",
+            "preferences": {
+              "theme": "light"
+            }
+          }
+        }
+      }
+    }
+  },
+  "ui": {
+    "selectors": {
+      "login": {
+        "emailInput": "[data-testid='email-input']",
+        "passwordInput": "[data-testid='password-input']",
+        "loginButton": "[data-testid='login-button']",
+        "errorMessage": "[data-testid='error-message']",
+        "welcomeMessage": "[data-testid='welcome-message']"
+      }
+    }
+  }
+} 

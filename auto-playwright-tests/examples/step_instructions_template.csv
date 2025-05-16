@@ -1,0 +1,12 @@
+step_description,api_endpoint,api_method,api_status,response_key,response_template,validation_type,validation_value,validation_selector,validation_assertion,test_data_source,test_data_field
+"Given I am on the login page",,,,,,url,/login,,,,
+"When I enter my email",,,,,,,,input[data-testid='email'],fill,users.valid,email
+"And I enter my password",,,,,,,,input[data-testid='password'],fill,users.valid,password
+"And I click the login button",/api/auth/login,POST,200,loginResponse,{"token":"jwt.token.here","user":{"id":"123","email":"{{users.valid.email}}"}},,,[data-testid='login-button'],click,,
+"Then I should be redirected to the dashboard",,,,,,url,/dashboard,,,,
+"And I should see a welcome message",,,,,,element,Welcome back!,[data-testid='welcome-msg'],toContainText,,
+"When I click on my profile",/api/user/profile,GET,200,userProfile,{"name":"John Doe","email":"{{users.valid.email}}"},,,[data-testid='profile-link'],click,,
+"Then I should see my profile details",,,,,,element,John Doe,[data-testid='profile-name'],toHaveText,,
+"And my email should be displayed correctly",,,,,,element,{{world.getResponse('userProfile').email}},[data-testid='profile-email'],toHaveText,,
+"When I update my name",/api/user/profile,PUT,200,profileUpdate,{"success":true},,,input[data-testid='name-input'],fill,users.update,name
+"Then I should see a success message",,,,,,element,Profile updated successfully,[data-testid='success-toast'],toBeVisible,, 
