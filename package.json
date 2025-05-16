@@ -1,0 +1,22 @@
+{
+  "name": "playwright-cucumber",
+  "version": "1.0.0",
+  "description": "Automated test generation with Playwright and Cucumber",
+  "scripts": {
+    "generate": "ts-node auto-playwright-tests/generate.ts",
+    "test": "cucumber-js"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^latest",
+    "@cucumber/gherkin": "^latest",
+    "@cucumber/messages": "^latest",
+    "@playwright/test": "^latest",
+    "glob": "^8.1.0",
+    "ts-node": "^latest",
+    "typescript": "^latest"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/node": "^latest"
+  }
+}
